@@ -21,7 +21,6 @@ import static com.google.common.math.LongMath.saturatedSubtract;
 import com.google.common.annotations.GwtCompatible;
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
-import com.google.errorprone.annotations.CheckReturnValue;
 import java.util.concurrent.Callable;
 import javax.annotation.CheckForNull;
 
@@ -152,8 +151,8 @@ public final class CacheStats {
 
   /**
    * Returns the total number of times that {@link Cache} lookup methods attempted to load new
-   * values. This includes both successful load operations, as well as those that threw exceptions.
-   * This is defined as {@code loadSuccessCount + loadExceptionCount}.
+   * values. This includes both successful load operations and those that threw exceptions. This is
+   * defined as {@code loadSuccessCount + loadExceptionCount}.
    *
    * <p><b>Note:</b> the values of the metrics are undefined in case of overflow (though it is
    * guaranteed not to throw an exception). If you require specific handling, we recommend
@@ -261,7 +260,6 @@ public final class CacheStats {
    *
    * @since 11.0
    */
-  @CheckReturnValue
   public CacheStats plus(CacheStats other) {
     return new CacheStats(
         saturatedAdd(hitCount, other.hitCount),

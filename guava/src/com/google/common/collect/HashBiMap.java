@@ -29,6 +29,7 @@ import com.google.errorprone.annotations.concurrent.LazyInit;
 import com.google.j2objc.annotations.RetainedWith;
 import com.google.j2objc.annotations.Weak;
 import java.io.IOException;
+import java.io.InvalidObjectException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
@@ -332,6 +333,7 @@ public final class HashBiMap<K extends @Nullable Object, V extends @Nullable Obj
     return put(key, value, true);
   }
 
+  @CanIgnoreReturnValue
   @CheckForNull
   private K putInverse(@ParametricNullness V value, @ParametricNullness K key, boolean force) {
     int valueHash = smearedHash(value);
@@ -758,6 +760,11 @@ public final class HashBiMap<K extends @Nullable Object, V extends @Nullable Obj
 
     Object writeReplace() {
       return new InverseSerializedForm<>(HashBiMap.this);
+    }
+
+    @GwtIncompatible // serialization
+    private void readObject(ObjectInputStream in) throws InvalidObjectException {
+      throw new InvalidObjectException("Use InverseSerializedForm");
     }
   }
 

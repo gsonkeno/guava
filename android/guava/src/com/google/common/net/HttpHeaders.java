@@ -366,6 +366,16 @@ public final class HttpHeaders {
   public static final String SOURCE_MAP = "SourceMap";
 
   /**
+   * The HTTP <a href="https://github.com/WICG/nav-speculation/blob/main/opt-in.md">{@code
+   * Supports-Loading-Mode}</a> header field name. This can be used to specify, for example, <a
+   * href="https://developer.chrome.com/docs/privacy-sandbox/fenced-frame/#server-opt-in">fenced
+   * frames</a>.
+   *
+   * @since NEXT
+   */
+  public static final String SUPPORTS_LOADING_MODE = "Supports-Loading-Mode";
+
+  /**
    * The HTTP <a href="http://tools.ietf.org/html/rfc6797#section-6.1">{@code
    * Strict-Transport-Security}</a> header field name.
    *
@@ -689,6 +699,13 @@ public final class HttpHeaders {
    * @since 30.0
    */
   public static final String SEC_CH_UA_MOBILE = "Sec-CH-UA-Mobile";
+  /**
+   * The HTTP <a href="https://wicg.github.io/ua-client-hints/#sec-ch-ua-wow64">{@code
+   * Sec-CH-UA-WoW64}</a> header field name.
+   *
+   * @since NEXT
+   */
+  public static final String SEC_CH_UA_WOW64 = "Sec-CH-UA-WoW64";
   /**
    * The HTTP <a href="https://wicg.github.io/ua-client-hints/#sec-ch-ua-bitness">{@code
    * Sec-CH-UA-Bitness}</a> header field name.
